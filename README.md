@@ -18,7 +18,10 @@ source.canceled
 charge.pending
 ```
 
-
 ## Blesta Compatibility
 
 I am currently using this module on Blesta 5.4.0. Feel free to test it on other version of Blesta.
+
+## Known Issues (TODOs)
+
+1. When using this gateway with virtfusion, admins will have to activate servers manually. 
