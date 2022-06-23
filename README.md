@@ -1,6 +1,7 @@
 # Stripe WeChat/Alipay Gateway
 
-![logo.svg](https://raw.githubusercontent.com/Mr-Sheep/gateway-stripe-sources/master/views/default/images/logo.svg)
+<img src="https://raw.githubusercontent.com/Mr-Sheep/gateway-stripe-sources/master/views/default/images/logo.svg" width="20%" />
+
 
 This is a nonmerchant gateway for Blesta that integrates with [Alipay](https://stripe.com/docs/payments/alipay) and [WeChat Pay](https://stripe.com/docs/payments/wechat-pay) via the stripe [source api](https://stripe.com/docs/sources).
 
