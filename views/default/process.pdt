@@ -100,11 +100,11 @@ $(document).ready(function(){
         switch (buttonID) {
         case "pay-wechat":
             stripe.createSource({
-            type: 'wechat',
-            amount: fields.amount,
-            currency: fields.currency,
-            owner: fields.owner,
-            metadata: fields.metadata
+              type: 'wechat',
+              amount: fields.amount,
+              currency: fields.currency,
+              owner: fields.owner,
+              metadata: fields.metadata
             }).then(function(result) {
 
                 $(`#${buttonID}`).html(prevButtonContent);

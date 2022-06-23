@@ -1,29 +1,24 @@
 # Stripe WeChat/Alipay Gateway
-This is a nonmerchant gateway for Blesta that integrates with [Alipay](https://global.alipay.com/) and WeChat Pay via stripe.
+This is a nonmerchant gateway for Blesta that integrates with [Alipay](https://stripe.com/docs/payments/alipay) and [WeChat Pay](https://stripe.com/docs/payments/wechat-pay) via the stripe [source api](https://stripe.com/docs/sources).
 
-## Install the Gateway
+## How to
+1. Clone this project into  `/path/to/your/blesta/components/gateways/nonmerchant/stripe_sources`
 
-1. Upload the source code to a /components/gateways/nonmerchant/stripe_sources/ directory within
-your Blesta installation path.
+2. Log in to your admin Blesta account and navigate to `> Settings > Payment Gateways`
 
-    For example:
+3. Find the WeChat/Alipay Via Stripe gateway and install it
 
-    ```
-    /var/www/html/blesta/components/nonmerchant/stripe_sources/
-    ```
+4. Click Manage and populate the required fields and setup your webhook.
 
-3. Log in to your admin Blesta account and navigate to
-> Settings > Payment Gateways
-
-4. Find the WeChat/Alipay Via Stripe gateway and click the "Install" button to install it
-
-5. Click Manage and populate the required fields and setup your webhook.
-
-6. You're done!
+5. Configure stripe to send the following event:
+```
+source.chargeable
+charge.succeeded
+source.canceled
+charge.pending
+```
 
 
-### Blesta Compatibility
+## Blesta Compatibility
 
-|Blesta Version|Module Version|
-|--------------|--------------|
-|>= v4.9.0|v1.0.0|
+I am currently using this module on Blesta 5.4.0. Feel free to test it on other version of Blesta.

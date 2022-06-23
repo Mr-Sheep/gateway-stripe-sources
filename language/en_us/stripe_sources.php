@@ -11,8 +11,10 @@ $lang['StripeSources.description'] = 'Blesta payment gateway for WeChat Pay and 
 // Settings
 $lang['StripeSources.publishable_key'] = 'API Publishable Key';
 $lang['StripeSources.secret_key'] = 'API Secret Key';
+$lang['StripeSources.webhook_key'] = 'Webhook Signing Secret';
 $lang['StripeSources.tooltip_publishable_key'] = 'Your API Publishable Key is specific to either live or test mode. Be sure you are using the correct key.';
 $lang['StripeSources.tooltip_secret_key'] = 'Your API Secret Key is specific to either live or test mode. Be sure you are using the correct key.';
+$lang['StripeSources.tooltip_webhook_key'] = 'refer to https://stripe.com/docs/webhooks/signatures';
 
 
 // Charge description

@@ -5,14 +5,21 @@
             $this->Form->label($this->_('StripeSources.publishable_key', true));
             $this->Form->fieldText('publishable_key', $this->Html->ifSet($meta['publishable_key']));
             ?>
-			<span class="tooltip"><?php $this->_('AppController.tooltip.text');?><div><?php $this->_('StripeSource.tooltip_publishable_key');?></div></span>
+			<span class="tooltip"><?php $this->_('AppController.tooltip.text');?><div><?php $this->_('StripeSources.tooltip_publishable_key');?></div></span>
 		</li>
 		<li>
 			<?php
             $this->Form->label($this->_('StripeSources.secret_key', true));
             $this->Form->fieldText('secret_key', $this->Html->ifSet($meta['secret_key']));
             ?>
-			<span class="tooltip"><?php $this->_('AppController.tooltip.text');?><div><?php $this->_('StripeSource.tooltip_secret_key');?></div></span>
+			<span class="tooltip"><?php $this->_('AppController.tooltip.text');?><div><?php $this->_('StripeSources.tooltip_secret_key');?></div></span>
+		</li>
+		<li>
+			<?php
+            $this->Form->label($this->_('StripeSources.webhook_key', true));
+            $this->Form->fieldText('webhook_key', $this->Html->ifSet($meta['webhook_key']));
+            ?>
+			<span class="tooltip"><?php $this->_('AppController.tooltip.text');?><div><?php $this->_('StripeSources.tooltip_webhook_key');?></div></span>
 		</li>
 	</ul>
 
@@ -30,7 +37,6 @@
 	<code>
 	'source.chargeable'
 	'charge.succeeded'
-	'charge.canceled'
 	'source.canceled'
 	'charge.pending'
 	</code>

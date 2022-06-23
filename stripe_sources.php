@@ -13,6 +13,7 @@ error_reporting(E_ALL);
  * @package blesta
  * @subpackage blesta.components.gateways.StripeSources
  * @copyright Copyright (c) 2020, Kieran Coldron.
+ * @copyright Copyright (c) 2022, Mr-Sheep.
  * @license http://www.blesta.com/license/ The Blesta License Agreement
  * @link http://www.blesta.com/ Blesta
  */
@@ -176,7 +177,7 @@ class StripeSources extends NonmerchantGateway
                 
         try {
             $event = \Stripe\Webhook::constructEvent(
-                $payload, $sig_header, "whsec_6CcefumehVilUpCrSdJ4jO32IhH1j25o"
+                $payload, $sig_header, $this->ifSet($this->meta['webhook_key'])
             );
         } catch(\UnexpectedValueException $e) {
             // Invalid payload
@@ -191,7 +192,6 @@ class StripeSources extends NonmerchantGateway
         }
 
         $this->log($this->ifSet($_SERVER['REQUEST_URI']), serialize($event), 'input', true);    
-
 
         $status = 'error';
         $return_status = false;
@@ -219,7 +219,7 @@ class StripeSources extends NonmerchantGateway
                     $status = 'approved';
                     $return_status = true;
                 break;
-                case 'charge.canceled':
+                // case 'charge.canceled': 
                 case 'source.canceled':
                     $status = 'canceled';
                     $return_status = true;
@@ -252,14 +252,14 @@ class StripeSources extends NonmerchantGateway
 
         $source = \Stripe\Source::retrieve($get["source"],   
                     ['client_secret' => $get["client_secret"]]);
-
-       
+            
+        $status = "approved";
 
         return [
             'client_id' => $this->ifSet($get["client_id"]),
             'amount' => $this->unformatAmount($source->amount, $source->currency),
             'currency' => $this->ifSet($source->currency),
-            'status' => "approved",
+            'status' => $status,
             'reference_id' => null,
             'transaction_id' => $this->ifSet($source->metadata->transaction_id),
             'invoices' => $this->unserializeInvoices($source->metadata->invoices)
@@ -349,7 +349,8 @@ class StripeSources extends NonmerchantGateway
          if (is_numeric($amount) && !in_array($currency, $non_decimal_currencies)) {
              $amount *= 100;
          }
-         return (int)round($amount);
+        //  return (int)round($amount);
+        return (int)($amount);
      }
 
 
@@ -368,7 +369,8 @@ class StripeSources extends NonmerchantGateway
          if (is_numeric($amount) && !in_array($currency, $non_decimal_currencies)) {
              $amount /= 100;
          }
-         return (int)round($amount);
+        //  return (int)round($amount);
+        return ($amount);
      }
 
 
