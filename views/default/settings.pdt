@@ -25,25 +25,29 @@
 
 
 
-	<section class="error_section">
-        <article class="error_box alert">
-        
-	<p>
-	Remember to set up the webhook endpoint in the <a href="https://dashboard.stripe.com/webhooks">Stripe dashboard</a>. 
-	<br/>
-	<b>Endpoint URL: </b><?php echo(Configure::get('Blesta.gw_callback_url') . Configure::get('Blesta.company_id') . '/stripe_sources/'); ?> 
-	<br/>
-	<b>Events: </b>
-	<code>
-	'source.chargeable'
-	'charge.succeeded'
-	'source.canceled'
-	'charge.pending'
-	</code>
-	</p>
-
-
-
-    </article>
-    </section>
-
+    <div class="title_row">
+		<h3>Stripe Webhook</h3>
+	</div>
+    <div class="pad">    
+		<p>
+			Remember to set up the webhook endpoint in the <a href="https://dashboard.stripe.com/webhooks">Stripe dashboard</a>. 
+		</p>
+		<p>
+			<b>Endpoint URL: </b><?php echo(Configure::get('Blesta.gw_callback_url') . Configure::get('Blesta.company_id') . '/stripe_sources/'); ?> <br>
+			<b>Events: </b><br>
+			<code>
+				'source.chargeable' <br>
+				'charge.succeeded' <br>
+				'source.canceled' <br>
+				'charge.pending' <br>
+			</code>
+		</p>
+	</div>
+	
+	<div class="pad">
+		<p>
+			Please be aware that the currencies supported by Alipay and WeChatPay are different, 
+			<br /> for Alipay, please refer to: <a href="https://stripe.com/docs/payments/alipay">https://stripe.com/docs/payments/alipay</a>
+			<br /> for WeChatPay, please refer to: <a href="https://stripe.com/docs/payments/wechat-pay">https://stripe.com/docs/payments/wechat-pay</a>
+		</p>
+    </div>
